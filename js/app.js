@@ -44,7 +44,7 @@ class Enemy {
 class Player {
   constructor () {
     this.sprite = 'images/char-boy.png'
-    this.y = 400
+    this.y = 380
     this.x = enemyInitX[Math.floor((Math.random() * 3))]
   }
 
@@ -57,19 +57,17 @@ class Player {
   }
 
   handleInput (keyCode) {
-    if (keyCode === 'left') {
-      console.log(this.x)
+    if (keyCode === 'left' && this.x > 0) {
       this.x = this.x - 100
     }
-    if (keyCode === 'right') {
-      console.log(this.x)
+    if (keyCode === 'right' && this.x < 400) {
       this.x = this.x + 100
     }
-    if (keyCode === 'up') {
-      this.y = this.y - 100
+    if (keyCode === 'up' && this.y > 90) {
+      this.y = this.y - 80
     }
-    if (keyCode === 'down') {
-      this.y = this.y + 100
+    if (keyCode === 'down' && this.y < 380) {
+      this.y = this.y + 80
     }
   }
 }
