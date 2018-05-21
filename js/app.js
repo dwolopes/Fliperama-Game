@@ -48,10 +48,8 @@ class Player {
     this.x = enemyInitX[Math.floor((Math.random() * 3))]
   }
 
-  update (dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+  update () {
+
   }
 
   render () {
@@ -59,7 +57,20 @@ class Player {
   }
 
   handleInput (keyCode) {
-
+    if (keyCode === 'left') {
+      console.log(this.x)
+      this.x = this.x - 100
+    }
+    if (keyCode === 'right') {
+      console.log(this.x)
+      this.x = this.x + 100
+    }
+    if (keyCode === 'up') {
+      this.y = this.y - 100
+    }
+    if (keyCode === 'down') {
+      this.y = this.y + 100
+    }
   }
 }
 
