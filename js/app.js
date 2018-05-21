@@ -22,6 +22,13 @@ class Enemy {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x < 505) {
+      this.x += this.speed * dt * 3
+    } else {
+      this.x = -70
+      this.y = enemyInitY[Math.floor((Math.random() * 3))]
+      this.speed = Math.floor((Math.random() * 70) + 10)
+    }
   }
 
   // Draw the enemy on the screen, required method for game
