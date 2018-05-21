@@ -1,4 +1,5 @@
 const enemyInitY = [70, 150, 230]
+const enemyInitX = [0, 200, 400]
 const allEnemies = []
 
 // Enemies our player must avoid
@@ -36,6 +37,8 @@ class Enemy {
 class Player {
   constructor () {
     this.sprite = 'images/char-boy.png'
+    this.y = 400
+    this.x = enemyInitX[Math.floor((Math.random() * 3))]
   }
 
   update (dt) {
@@ -54,12 +57,11 @@ class Player {
 }
 
 // instantiating enemy and player.
+// Place all enemy objects in an array called allEnemies
 for (i = 0; i <= 2; i++) {
   allEnemies[i] = new Enemy()
 }
 const player = new Player()
-
-// Place all enemy objects in an array called allEnemies
 
 // Place the player object in a variable called player
 
