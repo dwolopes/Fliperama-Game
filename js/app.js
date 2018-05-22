@@ -1,6 +1,7 @@
-const enemyInitY = [70, 150, 230]
-const enemyInitX = [0, 200, 400]
-const allEnemies = []
+const enemyInitY = [70, 150, 230] // a bug can appear in any of theses poits related to Y axy
+const enemyInitX = [0, 200, 400] // A player can start from any of these poits related to X axy
+const allEnemies = [] // array to save all objetcs enemies
+let i = 0; // interator responsible for move and fill the Enemy array
 
 // Enemies our player must avoid
 class Enemy {
@@ -11,18 +12,23 @@ class Enemy {
   // a helper we've provided to easily load images
   constructor () {
     this.sprite = 'images/enemy-bug.png'
+    // Enemies start in the very begging of the screen
     this.x = -70
+    // Enemies can appear in any position related do Y axy
     this.y = enemyInitY[Math.floor((Math.random() * 3))]
+    // Initial speed of the enemy
     this.speed = Math.floor((Math.random() * 70) + 10)
+    // Radious which helps to check collisions
     this.radious = 30
   }
 
   // Update the enemy's position, required method for game
   // Parameter: dt, a time delta between ticks
   update (dt) {
-    // You should multiply any movement by the dt parameter
+    // multiply any movement by the dt parameter, making sure the speed will be the same in any computer
     // which will ensure the game runs at the same speed for
-    // all computers.
+    // Inside de canvas element, increment the speed and move x axy
+    // If the bug achieve the limits of canvas element, start from the initial position again
     if (this.x < 505) {
       this.x += this.speed * dt * 3
     } else {
@@ -38,12 +44,15 @@ class Enemy {
   }
 
   // Check colisions
-
+  // Calculate de distance between the center of the enemy and player
+  // if the distance between these two points is less than 2 times the radious of these elements,
+  // a colision was detected
   checkCollisions () {
     let xDistace = this.x - player.x
     let yDistace = this.y - player.y
     let xyDistance = Math.sqrt(xDistace * xDistace + yDistace * yDistace)
     if (xyDistance < this.radious + player.radious) {
+      // a collision was deteced so the player wil start again from one of the initial points
       player.y = 380
       player.x = enemyInitX[Math.floor((Math.random() * 3))]
     }
@@ -57,19 +66,22 @@ class Enemy {
 class Player {
   constructor () {
     this.sprite = 'images/char-boy.png'
+    // Initial point of the player relates do Y axy
     this.y = 380
+    // Sort the position where there player will start
     this.x = enemyInitX[Math.floor((Math.random() * 3))]
+    // Radious which helps to check collisions
     this.radious = 30
   }
 
-  update () {
-
-  }
+  // Update player position
+  update () {}
 
   render () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
   }
 
+  // according to the limits of the canvas element, move the player
   handleInput (keyCode) {
     if (keyCode === 'left' && this.x > 0) {
       this.x = this.x - 100
@@ -95,9 +107,8 @@ class Player {
 for (i = 0; i <= 2; i++) {
   allEnemies[i] = new Enemy()
 }
-const player = new Player()
-
 // Place the player object in a variable called player
+const player = new Player()
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
