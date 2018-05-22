@@ -14,6 +14,7 @@ class Enemy {
     this.x = -70
     this.y = enemyInitY[Math.floor((Math.random() * 3))]
     this.speed = Math.floor((Math.random() * 70) + 10)
+    this.radious = 30
   }
 
   // Update the enemy's position, required method for game
@@ -35,6 +36,18 @@ class Enemy {
   render () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
   }
+
+  // Check colisions
+
+  checkCollisions () {
+    let xDistace = this.x - player.x
+    let yDistace = this.y - player.y
+    let xyDistance = Math.sqrt(xDistace * xDistace + yDistace * yDistace)
+    if (xyDistance < this.radious + player.radious) {
+      player.y = 380
+      player.x = enemyInitX[Math.floor((Math.random() * 3))]
+    }
+  }
 }
 
 // Now write your own player class
@@ -46,6 +59,7 @@ class Player {
     this.sprite = 'images/char-boy.png'
     this.y = 380
     this.x = enemyInitX[Math.floor((Math.random() * 3))]
+    this.radious = 30
   }
 
   update () {
@@ -65,7 +79,7 @@ class Player {
     }
     if (keyCode === 'up') {
       this.y = this.y - 80
-      if (this.y < 60){
+      if (this.y < 60) {
         this.y = 380
         this.x = enemyInitX[Math.floor((Math.random() * 3))]
       }
