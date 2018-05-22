@@ -63,8 +63,12 @@ class Player {
     if (keyCode === 'right' && this.x < 400) {
       this.x = this.x + 100
     }
-    if (keyCode === 'up' && this.y > 90) {
+    if (keyCode === 'up') {
       this.y = this.y - 80
+      if (this.y < 60){
+        this.y = 380
+        this.x = enemyInitX[Math.floor((Math.random() * 3))]
+      }
     }
     if (keyCode === 'down' && this.y < 380) {
       this.y = this.y + 80
