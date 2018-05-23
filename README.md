@@ -1,4 +1,4 @@
-# [Udacity Classic Arcade Game Clone](https://github.com/udacity/frontend-nanodegree-arcade-game)
+# [Udacity Classic Arcade Game](https://github.com/udacity/frontend-nanodegree-arcade-game)
 
 
 This game is showing how to create a game using HTML5(Canvas) and JS. This is based on enemies(bugs) and one player. The goal of the player is reach out the water without colliding into any one of the enemies. The difficult part is the fact that the enemies move fast across the field and they come out from everywhere 0/
@@ -50,3 +50,5 @@ IE 9+ ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
 English is the universal language nowadays, so please don't create or comment on issues using another language.
 
 ## License
+
+[![demo](./LICENSE.MD)](This project is licensed under the MIT License) - see the LICENSE.md file for details
