@@ -37,9 +37,7 @@ In order to play the game properly, consider the following steps:
 
 In order to run the game properly, consider install:
 
-    ```
     Python
-    ```
 
 > [Dowload Python](https://wiki.python.org/moin/BeginnersGuide/Download).
 
