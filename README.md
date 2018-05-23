@@ -51,14 +51,14 @@ In order to run the game properly, consider install:
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
-[[LICENSE.md](./LICENSE.md)](This project is licensed under the MIT License) - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details
 
 ## Authors
 
 * **Douglas Lopes** - *Initial work* - [Douglas Lopes](https://github.com/dwolopes)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://dwolopes.github.io/Fliperama-Game/) who participated in this project.
