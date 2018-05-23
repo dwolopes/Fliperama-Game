@@ -1,7 +1,32 @@
 const enemyInitY = [70, 150, 230] // a bug can appear in any of theses poits related to Y axy
 const enemyInitX = [0, 200, 400] // A player can start from any of these poits related to X axy
 const allEnemies = [] // array to save all objetcs enemies
-let i = 0; // interator responsible for move and fill the Enemy array
+let i = 0 // interator responsible for move and fill the Enemy array
+
+let config = {
+  'enemy': {
+    'initial_X': -70,
+    'image': 'images/enemy-bug.png',
+    'enemyInitY': [70, 150, 230],
+    'radious': 30,
+    'xLimit': 505,
+    'speedIncremeter': 3
+
+  },
+  'player': {
+    'initial_Y': 380,
+    'image': 'images/char-boy.png',
+    'enemyInitX': [0, 200, 400],
+    'radious': 30,
+    'xLimit': 505,
+    'leftLimit': 0,
+    'topLimit': 60,
+    'rightLimit': 400,
+    'bottomLimit': 380,
+    'leftRightDecrement': 100,
+    'upDownDecrement': 80
+  }
+}
 
 // Enemies our player must avoid
 class Enemy {
@@ -11,15 +36,15 @@ class Enemy {
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
   constructor () {
-    this.sprite = 'images/enemy-bug.png'
+    this.sprite = config.enemy.image
     // Enemies start in the very begging of the screen
-    this.x = -70
+    this.x = config.enemy.initial_X
     // Enemies can appear in any position related do Y axy
-    this.y = enemyInitY[Math.floor((Math.random() * 3))]
+    this.y = config.enemy.enemyInitY[Math.floor((Math.random() * 3))]
     // Initial speed of the enemy
     this.speed = Math.floor((Math.random() * 70) + 10)
     // Radious which helps to check collisions
-    this.radious = 30
+    this.radious = config.enemy.radious
   }
 
   // Update the enemy's position, required method for game
@@ -29,10 +54,11 @@ class Enemy {
     // which will ensure the game runs at the same speed for
     // Inside de canvas element, increment the speed and move x axy
     // If the bug achieve the limits of canvas element, start from the initial position again
-    if (this.x < 505) {
-      this.x += this.speed * dt * 3
+    if (this.x < config.enemy.xLimit) {
+      this.x += this.speed * dt * config.enemy.speedIncremeter
     } else {
-      this.x = -70
+      this.x = config.enemy.initial_X
+      // 3, 70 and 10 are randomly chosen to define the speed
       this.y = enemyInitY[Math.floor((Math.random() * 3))]
       this.speed = Math.floor((Math.random() * 70) + 10)
     }
@@ -53,7 +79,7 @@ class Enemy {
     let xyDistance = Math.sqrt(xDistace * xDistace + yDistace * yDistace)
     if (xyDistance < this.radious + player.radious) {
       // a collision was deteced so the player wil start again from one of the initial points
-      player.y = 380
+      player.y = config.player.initial_Y
       player.x = enemyInitX[Math.floor((Math.random() * 3))]
     }
   }
@@ -65,13 +91,13 @@ class Enemy {
 
 class Player {
   constructor () {
-    this.sprite = 'images/char-boy.png'
+    this.sprite = config.player.image
     // Initial point of the player relates do Y axy
-    this.y = 380
+    this.y = config.player.initial_Y
     // Sort the position where there player will start
     this.x = enemyInitX[Math.floor((Math.random() * 3))]
     // Radious which helps to check collisions
-    this.radious = 30
+    this.radious = config.player.radious
   }
 
   // Update player position
@@ -83,21 +109,21 @@ class Player {
 
   // according to the limits of the canvas element, move the player
   handleInput (keyCode) {
-    if (keyCode === 'left' && this.x > 0) {
-      this.x = this.x - 100
+    if (keyCode === 'left' && this.x > config.player.leftLimit) {
+      this.x = this.x - config.player.leftRightDecrement
     }
-    if (keyCode === 'right' && this.x < 400) {
-      this.x = this.x + 100
+    if (keyCode === 'right' && this.x < config.player.rightLimit) {
+      this.x = this.x + config.player.leftRightDecrement
     }
     if (keyCode === 'up') {
-      this.y = this.y - 80
-      if (this.y < 60) {
-        this.y = 380
+      this.y = this.y - config.player.upDownDecrement
+      if (this.y < config.player.topLimit) {
+        this.y = config.player.initial_Y
         this.x = enemyInitX[Math.floor((Math.random() * 3))]
       }
     }
-    if (keyCode === 'down' && this.y < 380) {
-      this.y = this.y + 80
+    if (keyCode === 'down' && this.y < config.player.bottomLimit) {
+      this.y = this.y + config.player.upDownDecrement
     }
   }
 }
