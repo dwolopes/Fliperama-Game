@@ -11,7 +11,7 @@ A player can be moved to left, right, up and down using the arrows signs at your
 
 > [Check it live](https://dwolopes.github.io/Fliperama-Game/).
 
-## Usage
+## Getting Started
 
 In order to play the game properly, consider the following steps:
 
@@ -33,22 +33,32 @@ In order to play the game properly, consider the following steps:
     $ open "http://localhost:8000"
     ```
 
-## Browser Support
+### Prerequisites
 
-![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)
---- | --- | --- | --- | --- |
-IE 9+ ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
+In order to run the game properly, consider install:
+
+    ```
+        Install Python
+    ```
+
+> [Dowload Python](https://wiki.python.org/moin/BeginnersGuide/Download).
+
+## Built With
+
+* [JavaScript](https://www.javascript.com/) - The main programming language used
+* HTML
+* CSS
 
 ## Contributing
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m "Add some feature"`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request  :)
-
-English is the universal language nowadays, so please don't create or comment on issues using another language.
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
 [[LICENSE.md](./LICENSE.md)](This project is licensed under the MIT License) - see the LICENSE.md file for details
+
+## Authors
+
+* **Douglas Lopes** - *Initial work* - [Douglas Lopes](https://github.com/dwolopes)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
