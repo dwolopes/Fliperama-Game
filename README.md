@@ -51,4 +51,4 @@ English is the universal language nowadays, so please don't create or comment on
 
 ## License
 
-[![LICENSE.md](./LICENSE.MD)](This project is licensed under the MIT License) - see the LICENSE.md file for details
+[[LICENSE.md](./LICENSE.md)](This project is licensed under the MIT License) - see the LICENSE.md file for details
