@@ -1,5 +1,3 @@
-const enemyInitY = [70, 150, 230] // a bug can appear in any of theses poits related to Y axy
-const enemyInitX = [0, 200, 400] // A player can start from any of these poits related to X axy
 const allEnemies = [] // array to save all objetcs enemies
 let i = 0 // interator responsible for move and fill the Enemy array
 
@@ -16,7 +14,7 @@ let config = {
   'player': {
     'initial_Y': 380,
     'image': 'images/char-boy.png',
-    'enemyInitX': [0, 200, 400],
+    'playerInitX': [0, 200, 400],
     'radious': 30,
     'xLimit': 505,
     'leftLimit': 0,
@@ -28,23 +26,40 @@ let config = {
   }
 }
 
-// Enemies our player must avoid
-class Enemy {
-  // Variables applied to each of our instances go here,
-  // we've provided one for you to get started
 
-  // The image/sprite for our enemies, this uses
-  // a helper we've provided to easily load images
+
+
+class Characters {
+
+    constructor(sprite, initialX, initialY, radious) {
+      // The image of the character
+      this.sprite  = sprite;
+      // Radious which helps to check collisions
+      this.radious = radious;
+      // Initial position related to X axy
+      this.x = initialX;
+      // Initial position related to Y axy
+      this.y = initialY;
+    }
+
+    // Update the characters' position, required method for game
+    update(){}
+    // Draw the character on the screen, required method for game
+    render () {
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
+    }
+}
+
+// Enemies our player must avoid
+class Enemy extends Characters{
+  // Variables applied to each of our instances go here,
   constructor () {
-    this.sprite = config.enemy.image
-    // Enemies start in the very begging of the screen
-    this.x = config.enemy.initial_X
-    // Enemies can appear in any position related do Y axy
-    this.y = config.enemy.enemyInitY[Math.floor((Math.random() * 3))]
-    // Initial speed of the enemy
-    this.speed = Math.floor((Math.random() * 70) + 10)
-    // Radious which helps to check collisions
-    this.radious = config.enemy.radious
+    super(config.enemy.image,
+      config.enemy.initial_X,
+      config.enemy.enemyInitY[Math.floor((Math.random() * 3))],
+      config.enemy.radious)
+      // Initial speed of the enemy
+      this.speed = Math.floor((Math.random() * 70) + 10)
   }
 
   // Update the enemy's position, required method for game
@@ -59,7 +74,7 @@ class Enemy {
     } else {
       this.x = config.enemy.initial_X
       // 3, 70 and 10 are randomly chosen to define the speed
-      this.y = enemyInitY[Math.floor((Math.random() * 3))]
+      this.y = config.enemy.enemyInitY[Math.floor((Math.random() * 3))]
       this.speed = Math.floor((Math.random() * 70) + 10)
     }
   }
@@ -80,7 +95,7 @@ class Enemy {
     if (xyDistance < this.radious + player.radious) {
       // a collision was deteced so the player wil start again from one of the initial points
       player.y = config.player.initial_Y
-      player.x = enemyInitX[Math.floor((Math.random() * 3))]
+      player.x = config.player.playerInitX[Math.floor((Math.random() * 3))]
     }
   }
 }
@@ -89,19 +104,13 @@ class Enemy {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-class Player {
+class Player extends Characters {
   constructor () {
-    this.sprite = config.player.image
-    // Initial point of the player relates do Y axy
-    this.y = config.player.initial_Y
-    // Sort the position where there player will start
-    this.x = enemyInitX[Math.floor((Math.random() * 3))]
-    // Radious which helps to check collisions
-    this.radious = config.player.radious
+    super(config.player.image,
+      config.player.playerInitX[Math.floor((Math.random() * 3))],
+      config.player.initial_Y,
+      config.player.radious)
   }
-
-  // Update player position
-  update () {}
 
   render () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
@@ -119,7 +128,7 @@ class Player {
       this.y = this.y - config.player.upDownDecrement
       if (this.y < config.player.topLimit) {
         this.y = config.player.initial_Y
-        this.x = enemyInitX[Math.floor((Math.random() * 3))]
+        this.x = config.player.playerInitX[Math.floor((Math.random() * 3))]
       }
     }
     if (keyCode === 'down' && this.y < config.player.bottomLimit) {
