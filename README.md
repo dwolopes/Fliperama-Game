@@ -18,7 +18,7 @@ In order to play the game properly, consider the following steps:
 1. Clone project:
 
     ```
-    $ [sudo] git clone git@github.com:brenopolanski/udacity-classic-arcade-game-clone.git
+    $ [sudo] git clone git@github.com:https://github.com/dwolopes/Fliperama-Game.git
     ```
 
 2. Serve the application:
